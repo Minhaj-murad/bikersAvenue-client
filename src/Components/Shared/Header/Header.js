@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../../../assests/logo/logo1.webp'
 
 const Header = () => {
  
@@ -32,10 +32,14 @@ const Header = () => {
             
           </ul>
         </div>
-        <Link to='/' className="btn btn-ghost normal-case text-xl gap-4 -mt-6">
-          {/* <img className='w-16 ' src={img} alt="" /> */}
-          <h1 className='company-name text-white font-extrabold text-3xl'> Bikers Avenue!</h1>
+       <div className='justify-center items-center '>
+       <Link to='/'>
+          <div className='sm:flex sm:justify-center items-center'>
+          <img className='w-20 mx-auto lg:w-24   ' src={logo} alt="" /> 
+          <h1 className='company-name text-white font-extrabold text-3xl'> BIKERSavenue</h1>
+          </div>
         </Link>
+       </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0 ml-24">

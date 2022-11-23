@@ -1,6 +1,7 @@
 
 import { createBrowserRouter } from 'react-router-dom';
 import Main from '../Components/Layout/Main';
+import Catagories from '../Components/Pages/Home/Catagoories/Catagories';
 import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/Login/Login';
 import Register from '../Components/Pages/Register/Register';
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
         children:  [
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Home></Home>,
+                loader:()=>fetch('catagories.json')
             },
             {
                 path:'/home',
@@ -27,6 +29,11 @@ const router = createBrowserRouter([
             {
                 path:'/signup',
                 element:<Register></Register>
+            },
+            {
+                path:'/',
+                element:<Catagories></Catagories>,
+                
             },
             
         ],

@@ -1,0 +1,26 @@
+[
+    {
+        "id":"1",
+        "brand":"Yamaha",
+        "image":"https://i.ibb.co/Bg7jrgF/wp5995369.webp"
+
+    },
+    {
+        "id":"2",
+        "brand":"Suzuki",
+        "image":"https://www.drivespark.com/images/2019-08/suzuki-gixxer-250-7.jpg"
+
+    },
+    {
+        "id":"3",
+        "brand":"TVS",
+        "image":"https://www.iamabiker.com/wp-content/uploads/2021/04/2021-TVS-Apache-RTR-200-4V-HD-wallpapers-9.jpg"
+
+    },
+    {
+        "id":"4",
+        "brand":"Bajaj",
+        "image":"https://wallpaperaccess.com/full/1890481.jpg"
+
+    }
+]

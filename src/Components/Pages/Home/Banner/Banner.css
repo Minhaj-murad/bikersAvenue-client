@@ -1,0 +1,17 @@
+.car-image:after {
+    content:'';
+    position:absolute;
+    left:0; 
+    top:0;
+    width:100vw; 
+    height:100vh;
+    border-radius: 12px;
+    display:inline-block;
+    background: linear-gradient(to right,  #151414 0%,rgba(14, 14, 14, 0.352) 100%); /* W3C */
+  }
+  .car-img{
+    width:100vw;
+    height: 100vh;
+  }
+
+
