@@ -1,3 +1,14 @@
+.background{
+  background-image: url('../src/assests/background/bg-1.jpg');
+  background-size: 100%;
+  
+}
+.outlet{
+  background-color: rgba(0, 0, 0, 0.705);
+}
+
+
+
 .App {
   text-align: center;
 }
