@@ -6,6 +6,7 @@ import Catagories from '../Components/Pages/Home/Catagoories/Catagories';
 import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/Login/Login';
 import Register from '../Components/Pages/Register/Register';
+import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 import ErrorPage from '../Components/Shared/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/bikecategories/:id',
-                element:<Brand></Brand>,
+                element:<PrivateRoute><Brand></Brand></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/bikecategories/${params.id}`)
                 
             },

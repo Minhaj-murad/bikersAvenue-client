@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BookingModal from './Brand/SingleBike/BooikngModal/BookingModal';
 
 const Brands = ({company}) => {
     console.log(company);
@@ -17,7 +18,7 @@ const Brands = ({company}) => {
                         </div>
                     </div>
                 </div>
-                
+              
             </div>
         
     );
