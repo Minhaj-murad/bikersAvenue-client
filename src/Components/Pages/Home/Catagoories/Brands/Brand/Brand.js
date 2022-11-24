@@ -10,7 +10,7 @@ const Brand = () => {
         <div className='grid sm:grid-cols-1 lg:grid-cols-2'>
             {
                 bikes.map(bike => <SingleBike
-                    key={bike.id} bike={bike}> </SingleBike>)
+                    key={bike._id} bike={bike}> </SingleBike>)
             }
         </div>
     );
