@@ -1,10 +1,13 @@
 
 import { createBrowserRouter } from 'react-router-dom';
+import DashBoardLayout from '../Components/Layout/DashBoardLayout/DashBoardLayout';
 import Main from '../Components/Layout/Main';
+import MyBookings from '../Components/Pages/Dashboad/MyBookings/MyBookings';
 import Brand from '../Components/Pages/Home/Catagoories/Brands/Brand/Brand';
 import Catagories from '../Components/Pages/Home/Catagoories/Catagories';
 import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/Login/Login';
+import MyBlog from '../Components/Pages/MyBlog/MyBlog';
 import Register from '../Components/Pages/Register/Register';
 import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 import ErrorPage from '../Components/Shared/ErrorPage/ErrorPage';
@@ -38,6 +41,11 @@ const router = createBrowserRouter([
                 
             },
             {
+                path:'/blog',
+                element:<MyBlog></MyBlog>,
+                
+            },
+            {
                 path:'/bikecategories/:id',
                 element:<PrivateRoute><Brand></Brand></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/bikecategories/${params.id}`)
@@ -45,6 +53,16 @@ const router = createBrowserRouter([
             },
             
         ],
+    },
+    {
+            path:'/dashboard',
+            element:<DashBoardLayout></DashBoardLayout>,
+            children:[
+                {
+                    path:'/dashboard',
+                    element:<MyBookings></MyBookings>,
+                },
+            ]
     }
 ])
 

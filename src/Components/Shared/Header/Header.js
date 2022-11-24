@@ -4,7 +4,7 @@ import logo from '../../../assests/logo/logo1.webp'
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Header = () => {
-  const{user,logOut}=useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
   const handleLogOut = () => {
     logOut()
       .then(() => { })
@@ -17,13 +17,19 @@ const Header = () => {
     {
       user?.email ?
         <>
-        
-    
+
+
           <li className='font-semibold text-white'><Link onClick={handleLogOut} >Logout</Link></li> </>
-          :
-        <li className='font-semibold text-white'><Link to='/login'>Login</Link></li> 
-    
+        :
+        <li className='font-semibold text-white'><Link to='/login'>Login</Link></li>
+
     }
+    <li className='font-semibold text-white'><Link to='/blog'>My Blog</Link></li>
+    <li className='font-semibold text-black lg:ml-4'><select className="select select-error w-full max-w-sm rounded-2xl font-bold">
+      <option disabled selected >Buyer/Seller</option>
+      <option className='font-bold'><Link to='/login'>Buyer</Link></option>
+      <option className='font-bold'>Seller</option>
+    </select></li>
   </>
 
   return (
@@ -35,26 +41,26 @@ const Header = () => {
           </label>
           <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-900 rounded-box w-52 ml-12">
             {navItems}
-            
+
           </ul>
         </div>
-       <div className='justify-center items-center '>
-       <Link to='/'>
-          <div className='sm:flex sm:justify-center items-center'>
-          <img className='w-20 mx-auto lg:w-24   ' src={logo} alt="" /> 
-          <h1 className='company-name text-white font-extrabold text-3xl'> BIKERSavenue</h1>
-          </div>
-        </Link>
-       </div>
+        <div className='justify-center items-center '>
+          <Link to='/'>
+            <div className='sm:flex sm:justify-center items-center'>
+              <img className='w-20 mx-auto lg:w-24   ' src={logo} alt="" />
+              <h1 className='company-name text-white font-extrabold text-3xl'> BIKERSavenue</h1>
+            </div>
+          </Link>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0 ml-24">
           {navItems}
-          <li className='font-semibold text-white'><Link to='/blog'>My Blog</Link></li>
+
         </ul>
       </div>
       <div className="navbar-end">
-       
+
       </div>
     </div>
   );

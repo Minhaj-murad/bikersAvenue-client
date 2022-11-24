@@ -73,6 +73,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to Bikers Avenue? <Link className='text-blue-600 font-bold' to="/signup">Sign Up</Link> </p>
+                    <div className="divider">OR</div>
                     <div className='text-center'>
                         <h1>Or Login With: </h1>
                     <span><button onClick={handlegooglesign} className='bg-amber-600 py-1 px-2 rounded-lg text-center w-28 mx-auto  border border-gray-700 text-black'>Google </button></span>

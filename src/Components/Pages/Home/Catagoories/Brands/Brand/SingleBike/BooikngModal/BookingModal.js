@@ -6,10 +6,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const BookingModal = ({ name, location, resaleprice }) => {
+const BookingModal = ({ bikeName, location, resaleprice }) => {
     const { user } = useContext(AuthContext);
     // const date 
-
+     console.log(bikeName);
     const handlebooking = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -21,6 +21,37 @@ const BookingModal = ({ name, location, resaleprice }) => {
         console.log(email, location, phone, name);
         toast('Bike added on Cart succesfully', )
         form.reset()
+        const customer ={
+           
+            
+           
+            phone,
+            customername:name,
+            bikeName,
+            email,
+            location,
+            price:resaleprice
+
+        }
+        fetch('http://localhost:5000/customers' , {
+            method:'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(customer)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.acknowledged){
+                toast.success('Booking Added Successfully')
+            }
+            else{
+                toast.warning(data.message)
+            }
+        })
+       
+        
     }
 
 
@@ -39,7 +70,7 @@ const BookingModal = ({ name, location, resaleprice }) => {
 
                         <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full mt-6" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email" className="input input-bordered w-full mt-6" />
-                        <input name='bikename' type="text" disabled placeholder="Bikename" className="input input-bordered w-full mt-6" value={name} />
+                        <input name='bikename' type="text" disabled placeholder="Bikename" className="input input-bordered w-full mt-6" value={bikeName} />
                         <input name='price' type="text" disabled placeholder="Resale Price" className="input input-bordered w-full mt-6" value={resaleprice} />
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full mt-6" />
                         <input name='location' type="text" placeholder="Location" className="input input-bordered w-full mt-6" />

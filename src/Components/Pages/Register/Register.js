@@ -71,7 +71,9 @@ const Register = () => {
                             <input className="btn text-gray-900 btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p className='text-center'>New to Bikers Avenue? <Link className='text-blue-600 font-bold' to="/login">Login</Link> </p>
+                    <p className='text-center'>Already Have an Account? <Link className='text-blue-600 font-bold' to="/login">Login</Link> </p>
+                    <div className="divider">OR</div>
+                    
                     <div className='text-center'>
                         <h1>Or Login With: </h1>
                     <span><button onClick={handlegooglesign} className='bg-amber-600 py-1 px-2 rounded-lg text-center w-28 mx-auto  border border-gray-700 text-black'>Google </button></span>
