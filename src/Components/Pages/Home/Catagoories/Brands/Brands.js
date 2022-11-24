@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Brands = ({company}) => {
     console.log(company);
-    const {image,brand} =company;
+    const {image,brand,intro,id} =company;
     return (
         <div>
              
@@ -11,8 +12,8 @@ const Brands = ({company}) => {
                     <div className="hero-content text-center text-neutral-content">
                         <div className="max-w-md">
                             <h1 className="mb-5 text-5xl font-bold">{brand}</h1>
-                            <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">Get Started</button>
+                            <p className="mb-5">{intro}</p>
+                            <button className="btn btn-primary"><Link to={`/bikecategories/${id}`} className=' font-bold'>See Details </Link></button>
                         </div>
                     </div>
                 </div>

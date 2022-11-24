@@ -2,25 +2,29 @@
     {
         "id":"1",
         "brand":"Yamaha",
-        "image":"https://i.ibb.co/Bg7jrgF/wp5995369.webp"
+        "image":"https://i.ibb.co/Bg7jrgF/wp5995369.webp",  "intro":"Powered by the air-cooled, 149cc single-cylinder engine with closed loop fuel injection system, FZ-S FI V2 ensures better fuel efficiency and supreme balance, equipped with discs on both wheels. "
 
     },
     {
         "id":"2",
         "brand":"Suzuki",
-        "image":"https://www.drivespark.com/images/2019-08/suzuki-gixxer-250-7.jpg"
+        "image":"https://www.drivespark.com/images/2019-08/suzuki-gixxer-250-7.jpg",
+        "intro":"Country’s Best Sport Bike Manufacturer; Rancon Motorbikes Limited, Suzuki’s New Gixxer Series & 100th Anniversary Limited Edition Bike is Now Available in Bangladesh"
 
     },
     {
         "id":"3",
         "brand":"TVS",
-        "image":"https://www.iamabiker.com/wp-content/uploads/2021/04/2021-TVS-Apache-RTR-200-4V-HD-wallpapers-9.jpg"
+        "image":"https://www.iamabiker.com/wp-content/uploads/2021/04/2021-TVS-Apache-RTR-200-4V-HD-wallpapers-9.jpg",
+        "intro":"TVS Motor manufactures the largest range of 2-wheelers, starting from mopeds, to scooters, commuter motorcycles, to racing inspired bikes like the Apache series and the RR310. Whatever your requirement be, we have one for everyone."
 
     },
     {
         "id":"4",
         "brand":"Bajaj",
-        "image":"https://wallpaperaccess.com/full/1890481.jpg"
+        "image":"https://wallpaperaccess.com/full/1890481.jpg",
+        "intro":"With more than 18 million motorcycles sold in over 70 countries, the Bajaj brand is truly ‘The World’s Favourite Indian’. It is India’s No.1 motorcycle exporter with two out of three bikes sold internationally carrying a Bajaj badge."
+
 
     }
 ]
