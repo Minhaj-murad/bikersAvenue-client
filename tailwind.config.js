@@ -7,7 +7,7 @@ module.exports = {
     themes: [
       {
         MOTORBIKEStheme: {
-          primary: "#5D544D",
+          primary: "#EC5B00",
           secondary: "#837D78",
           accent: "#3A4256",
           neutral: "#18182F",
