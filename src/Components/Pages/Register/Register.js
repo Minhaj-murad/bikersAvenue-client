@@ -1,8 +1,11 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Register = () => {
-
+    const {createUser,googlesignin} = useContext(AuthContext);
+    const googleprovider = new GoogleAuthProvider();
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -10,7 +13,25 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password,name);
+        
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(err => console.error(err));
+    }
+     
+    const handlegooglesign = () => {
+        googlesignin(googleprovider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+             
 
+                
+            })
+            .catch(error => console.error(error));
     }
 
     return (
@@ -47,7 +68,10 @@ const Register = () => {
                         </div>
                     </form>
                     <p className='text-center'>New to Bikers Avenue? <Link className='text-blue-600 font-bold' to="/login">Login</Link> </p>
-                   
+                    <div className='text-center'>
+                        <h1>Or Login With: </h1>
+                    <span><button onClick={handlegooglesign} className='bg-amber-600 py-1 px-2 rounded-lg text-center w-28 mx-auto  border border-gray-700 text-black'>Google </button></span>
+                    </div>
 
                 </div>
                 

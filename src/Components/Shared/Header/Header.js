@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assests/logo/logo1.webp'
+import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Header = () => {
- 
-
+  const{user,logOut}=useContext(AuthContext)
+  const handleLogOut = () => {
+    logOut()
+      .then(() => { })
+      .catch(error => console.error(error))
+  }
 
 
   const navItems = <>
     <li className='font-semibold text-white'><Link to='/'>Home</Link></li>
-  
+    {
+      user?.email ?
         <>
-          <li className='font-semibold text-white'><Link to='/myblogs'>My Blogs</Link></li>
+        
     
-          <li className='font-semibold text-white'><Link >Logout</Link></li>
-
-        <li className='font-semibold text-white'><Link to='/login'>Login</Link></li> </>
+          <li className='font-semibold text-white'><Link onClick={handleLogOut} >Logout</Link></li> </>
+          :
+        <li className='font-semibold text-white'><Link to='/login'>Login</Link></li> 
     
-   
+    }
   </>
 
   return (
