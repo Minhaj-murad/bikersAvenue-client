@@ -25,8 +25,8 @@ const MyBookings= () => {
 
     return (
         <div>
-            <h1 className='text-3xl'> My Bookings</h1>
-            <div className="overflow-x-auto mt-6">
+            <h1 className='text-4xl text-white text-center mr-8'> My Orders</h1>
+            <div className="overflow-x-auto mt-8 mr-8">
                 <table className="table w-full">
                     <thead>
                         <tr>
