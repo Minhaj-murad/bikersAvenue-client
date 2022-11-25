@@ -22,12 +22,10 @@ const BookingModal = ({ bikeName, location, resaleprice }) => {
         toast('Bike added on Cart succesfully', )
         form.reset()
         const customer ={
-           
-            
-           
+
             phone,
             customername:name,
-            bikeName,
+            bikeName:bikeName,
             email,
             location,
             price:resaleprice

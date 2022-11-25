@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../Authprovider/Authprovider';
 
 
-const MyBookings= () => {
+const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/users?email=${user?.email}`
+    const url = `http://localhost:5000/sellerbikes?email=${user?.email}`
 
 
     const { data: customers = [] } = useQuery({
@@ -39,15 +39,15 @@ const MyBookings= () => {
                         </tr>
                     </thead>
                     <tbody>
-                    
+
                         {
                             customers.map((customer, i) => <tr>
                                 <th>{i + 1}</th>
-                                <td>{customer.customername}</td>
+                                <td>{customer.seller}</td>
                                 <td>{customer.bikeName}</td>
                                 <td>{customer.phone}</td>
                                 <td>{customer.location}</td>
-                                <td> {customer.price}</td>
+                                <td>{customer.resaleprice}</td>
                             </tr>
                             )
                         }
@@ -59,4 +59,5 @@ const MyBookings= () => {
     );
 };
 
-export default MyBookings;
+
+export default MyProducts;

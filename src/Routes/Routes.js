@@ -5,13 +5,15 @@ import Main from '../Components/Layout/Main';
 import AddProduct from '../Components/Pages/Dashboad/AddProduct/AddProduct';
 import AllBuyers from '../Components/Pages/Dashboad/AllBuyers';
 import MyBookings from '../Components/Pages/Dashboad/MyBookings/MyBookings';
+import MyProducts from '../Components/Pages/Dashboad/Myproducts/MyProducts';
 import Brand from '../Components/Pages/Home/Catagoories/Brands/Brand/Brand';
 import Catagories from '../Components/Pages/Home/Catagoories/Catagories';
 import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/Login/Login';
 import MyBlog from '../Components/Pages/MyBlog/MyBlog';
 import Register from '../Components/Pages/Register/Register';
-import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
+import AdminRoute from '../Components/ProtectedRoute/AdminRoute';
+// import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 
 import ErrorPage from '../Components/Shared/ErrorPage/ErrorPage';
 
@@ -62,7 +64,7 @@ const router = createBrowserRouter([
             element:<DashBoardLayout></DashBoardLayout>,
             children:[
                 {
-                    path:'/dashboard/myorders',
+                    path:'/dashboard',
                     element:<MyBookings></MyBookings>,
                 },
                 {
@@ -72,6 +74,12 @@ const router = createBrowserRouter([
                 {
                     path:'/dashboard/addbike',
                     element:<AddProduct></AddProduct>,
+    
+                },
+                {
+                    path:'/dashboard/myproducts',
+                    element:<MyProducts></MyProducts>,
+                   
                 },
             ]
     }

@@ -7,7 +7,7 @@ const SingleBike = ({ bike }) => {
     console.log(time);
     const{bikeName,picture,location,used,resaleprice,originalprice}=bike;
     console.log(bikeName);
-
+      
     return (
         <div>
             <div className="card card-compact w-80 sm:h-96 lg:h-[550px] lg:w-[650px] gap-10 mt-12 mb-12 mx-auto  bg-gray-800 text-white shadow-xl">

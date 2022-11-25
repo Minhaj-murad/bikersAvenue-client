@@ -35,7 +35,9 @@ const AddProduct = () => {
                     originalprice: data.originalprice,
                     location: data.location,
                     picture: imgData.data.url,
-                    catagoryid:data.catagoryid
+                    catagoryid:data.catagoryid,
+                    sellerid:data.id
+                    
                 }
 
                 // save bike information to the database
@@ -51,7 +53,7 @@ const AddProduct = () => {
                 .then(result =>{
                     console.log(result);
                     toast.success(`${data.name} is added successfully`);
-                    navigate('/dashboard/addbike')
+                    navigate('/dashboard/myproducts')
                 })
             }
         })
@@ -108,6 +110,13 @@ const AddProduct = () => {
                         required: true
                     })} className="input input-bordered w-full max-w-xs text-black" />
                     {errors.bike && <p className='text-red-500'>{errors.bike.message}</p>}
+                </div>
+                <div className="form-control w-full max-w-xs">
+                    <label className="label"> <span className="label-text text-lg font-semibold text-white">Enter Your Id</span></label>
+                    <input type="text" {...register("id", {
+                        required: true
+                    })} className="input input-bordered w-full max-w-xs text-black" />
+                    {errors.id && <p className='text-red-500'>{errors.id.message}</p>}
                 </div>
                 <div className="form-control w-full max-w-xs">
                     <label className="label"> <span className="label-text text-lg font-semibold text-white">Bike Models</span></label>

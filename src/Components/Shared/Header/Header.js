@@ -25,11 +25,8 @@ const Header = () => {
 
     }
     <li className='font-semibold text-white'><Link to='/blog'>My Blog</Link></li>
-    <li className='font-semibold text-black lg:ml-4'><select className="select select-error w-full max-w-sm rounded-2xl font-bold">
-      <option disabled selected >Buyer/Seller</option>
-      <option className='font-bold'><Link to='/login'>Buyer</Link></option>
-      <option className='font-bold'>Seller</option>
-    </select></li>
+    <li className='font-semibold text-white'><Link to='/dashboard'>DashBoard</Link></li>
+
   </>
 
   return (
@@ -59,9 +56,9 @@ const Header = () => {
 
         </ul>
       </div>
-      <div className="navbar-end">
-
-      </div>
+      <label htmlFor='dashboard-drawer' tabIndex={2} className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          </label>
     </div>
   );
 };
