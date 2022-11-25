@@ -14,9 +14,7 @@ const AllBuyers = () => {
     });
     console.log(buyers);
 
-    const handlemakeAdmin = () =>{
-       console.log('btn clicked');
-    }
+    
     return (
        
             <div className='mr-8 '>

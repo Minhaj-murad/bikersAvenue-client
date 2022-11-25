@@ -50,8 +50,8 @@ const router = createBrowserRouter([
             },
             {
                 path:'/bikecategories/:id',
-                element:<PrivateRoute><Brand></Brand></PrivateRoute>,
-                loader: ({params})=> fetch(`http://localhost:5000/bikecategories/${params.id}`)
+                element:<Brand></Brand>,
+                loader: ({params})=> fetch(`http://localhost:5000/motorbikes/${params.id}`)
                 
             },
             

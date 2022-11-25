@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BookingModal from './Brand/SingleBike/BooikngModal/BookingModal';
+
 
 const Brands = ({company}) => {
     console.log(company);
-    const {image,brand,intro,_id} =company;
+    const {image,brand,intro,catagoryid} =company;
     return (
         <div>
              
@@ -14,7 +14,7 @@ const Brands = ({company}) => {
                         <div className="max-w-md">
                             <h1 className="mb-5 text-5xl font-bold">{brand}</h1>
                             <p className="mb-5">{intro}</p>
-                            <button className="btn btn-primary"><Link to={`/bikecategories/${_id}`} className=' font-bold'>See Details </Link></button>
+                            <button className="btn btn-primary"><Link to={`/bikecategories/${catagoryid}`} className=' font-bold'>See Details </Link></button>
                         </div>
                     </div>
                 </div>
