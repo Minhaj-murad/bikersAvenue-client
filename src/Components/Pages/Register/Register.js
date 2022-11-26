@@ -1,20 +1,28 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Authprovider/Authprovider';
+import useToken from '../../Hooks/useToken';
 
 
 const Register = () => {
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, googlesignin } = useContext(AuthContext);
+    const googleprovider = new GoogleAuthProvider();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signUpError, setSignUPError] = useState('')
-
+    const[createduseremail,setcreateduseremail]=useState('')
+     const [token]=useToken(createduseremail);
+     const navigate =useNavigate()
     const handleSignUp = (data) => {
-             
-            
+
+        if(token){
+            navigate('/');
+        }
+    
         setSignUPError('');
         createUser(data.email, data.password)
             .then(result => {
@@ -36,8 +44,8 @@ const Register = () => {
             });
     }
 
-    const saveUser = (name, email, seller, buyer) => {
-        const user = { name, email, buyer, seller };
+    const saveUser = (name, email) => {
+        const user = { name, email };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -48,9 +56,50 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('saveuser', data)
+                // getUserToken(email)
+                setcreateduseremail(email)
 
             })
     }
+    const handlegooglesignin = () => {
+        googlesignin(googleprovider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+
+                savebuyer(user.displayName, user.email);
+
+            })
+            .catch(error => console.error(error));
+    }
+
+    const savebuyer = (name, email) => {
+        const buyer = { name, email };
+        fetch('http://localhost:5000/buyers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(buyer)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('savebuyer', data)
+
+            })
+    }
+    //  Using JWTTOKEN in client side
+
+    // const getUserToken = email => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.accessToken) {
+    //                 localStorage.setItem('accessToken', data.accessToken)
+
+    //             }
+    //         })
+    // }
 
 
     return (
@@ -107,7 +156,7 @@ const Register = () => {
                     </form>
                     <p>Already Have an account?<Link to='/login' className='text-primary'> Go to Login</Link> </p>
                     <div className="divider">OR</div>
-                    <button className='bg-amber-600 py-1 px-2 rounded-lg text-center w-full mx-auto  border border-gray-700 text-black'>Continue With Google</button>
+                    <button onClick={handlegooglesignin} className='bg-amber-600 py-1 px-2 rounded-lg text-center w-full mx-auto  border border-gray-700 text-black'>Continue With Google</button>
                 </div>
             </div>
             <ToastContainer />

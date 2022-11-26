@@ -5,14 +5,19 @@ import { AuthContext } from '../../../Authprovider/Authprovider';
 
 const MyBookings= () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/users?email=${user?.email}`
+    const url = `http://localhost:5000/bookings?email=${user?.email}`
+      console.log(user);
 
-
-    const { data: customers = [] } = useQuery({
-        queryKey: ['customers', user?.email],
+    const { data: bookings = [] } = useQuery({
+        queryKey: ['bookings', user?.email],
         queryFn: async () => {
             if (user?.email) {
-                const res = await fetch(url)
+                const res = await fetch(url,{
+                    //  to get accesstoken from server and after signing up from localstorage
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
                 const data = await res.json();
                 console.log(data);
                 return data;
@@ -41,13 +46,13 @@ const MyBookings= () => {
                     <tbody>
                     
                         {
-                            customers.map((customer, i) => <tr>
+                            bookings.map((booking, i) => <tr>
                                 <th>{i + 1}</th>
-                                <td>{customer.customername}</td>
-                                <td>{customer.bikeName}</td>
-                                <td>{customer.phone}</td>
-                                <td>{customer.location}</td>
-                                <td> {customer.price}</td>
+                                <td>{booking.customername}</td>
+                                <td>{booking.bikeName}</td>
+                                <td>{booking.phone}</td>
+                                <td>{booking.location}</td>
+                                <td> {booking.price}</td>
                             </tr>
                             )
                         }

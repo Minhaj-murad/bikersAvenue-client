@@ -1,18 +1,25 @@
 
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link, useLocation, useNavigate, } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../Authprovider/Authprovider';
+// import useToken from '../../Hooks/useToken';
 
 
 
 const Login = () => {
-    const{login,googlesignin}=useContext(AuthContext);
+    const{signIn,googlesignin}=useContext(AuthContext);
     const googleprovider = new GoogleAuthProvider();
+    // const [loginUserEmail, setLoginUserEmail] = useState('');
+    // const [token] = useToken(loginUserEmail);
+ 
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
-
+  
+   
+    // if(token){
+    //     // navigate(from, { replace: true })
+    //     navigate('/')
+    // }
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -20,12 +27,13 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
 
-        login(email, password)
+        signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                navigate(from, { replace: true })
+                getUserToken(email)
+                navigate('/')
             })
             .then(error => console.log(error));
 
@@ -36,14 +44,26 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, { replace: true })
+                navigate('/')
 
                 
             })
             .catch(error => console.error(error));
     }
 
-   
+    //  how to use JWTTOKEN in client side
+     
+    const getUserToken = email =>{
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+        .then(res=> res.json())
+        .then(data=>{
+            if (data.accessToken){
+                localStorage.setItem('accessToken', data.accessToken)
+                
+            }
+        })
+    }
+            
 
     
 

@@ -12,7 +12,12 @@ const MyProducts = () => {
         queryKey: ['customers', user?.email],
         queryFn: async () => {
             if (user?.email) {
-                const res = await fetch(url)
+                const res = await fetch(url,{
+                    //  to get accesstoken from server and after signing up from localstorage
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
                 const data = await res.json();
                 console.log(data);
                 return data;
