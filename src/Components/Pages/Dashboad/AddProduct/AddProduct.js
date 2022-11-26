@@ -37,7 +37,9 @@ const AddProduct = () => {
                         location: data.location,
                         picture: imgData.data.url,
                         catagoryid: data.catagoryid,
-                        phone: data.phonenumber
+                        phone: data.phonenumber,
+                        used:data.year,
+                        condition:data.condition
 
                     }
 
@@ -114,6 +116,20 @@ const AddProduct = () => {
                         {errors.bike && <p className='text-red-500'>{errors.bike.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Bike Condition Type</span></label>
+                        <input placeholder='Excellent/Good/Fair' type="text" {...register("condition", {
+                            required: true
+                        })} className="input input-bordered w-full max-w-xs text-black" />
+                        {errors.bike && <p className='text-red-500'>{errors.bike.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Year Of Purchase</span></label>
+                        <input type="text" {...register("year", {
+                            required: true
+                        })} className="input input-bordered w-full max-w-xs text-black" />
+                        {errors.bike && <p className='text-red-500'>{errors.bike.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-lg font-semibold text-white">Phone Number</span></label>
                         <input type="text" {...register("phonenumber", {
                             required: true
@@ -121,7 +137,7 @@ const AddProduct = () => {
                         {errors.phonenumber && <p className='text-red-500'>{errors.phonenumber.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Bike Models</span></label>
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Bike Catagories</span></label>
                         <select
                             {...register('catagoryid')}
                             className="select input-bordered w-full max-w-xs text-black">

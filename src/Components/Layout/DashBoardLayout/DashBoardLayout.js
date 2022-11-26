@@ -35,10 +35,10 @@ const DashBoardLayout = () => {
                         {
                             isAdmin &&
                             <>
-                               <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/addbike'>Add Bike</Link></li>
-                                <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/myproducts'>My Products</Link></li>
-                                <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allusers'>All Users</Link></li>
-                                <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
+                               {/* <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/addbike'>Add Bike</Link></li>
+                                <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/myproducts'>My Products</Link></li> */}
+                                <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allusers'>All Buyers</Link></li>
+                               
                                 <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allsellers'>All sellers</Link></li>
                             </>
                         }

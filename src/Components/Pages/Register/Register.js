@@ -77,7 +77,7 @@ const Register = () => {
 
     const savebuyer = (name, email) => {
         const buyer = { name, email };
-        fetch('http://localhost:5000/buyers', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -113,12 +113,7 @@ const Register = () => {
                     <form onSubmit={handleSubmit(handleSignUp)}>
 
 
-                        <div className="form-control w-full max-w-xs">
-                            <label className="label">
-                                <span className="label-text  text-gray-800">Name</span>
-                            </label>
-                            <input {...register("name", { required: "Name  is required" })} className="input input-bordered w-full max-w-xs" />
-                        </div>
+                         
 
                         <select {...register("role", { required: "buyer  is required" })} className="select select-bordered w-full max-w-xs mt-8">
                             <option disabled selected>Select Your Choice</option>

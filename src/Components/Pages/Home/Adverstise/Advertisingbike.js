@@ -1,11 +1,7 @@
 import React from 'react';
-// import BookingModal from './BooikngModal/BookingModal';
 
-const SingleBike = ({ bike, setvehicle }) => {
-    console.log(bike);
-    const time =new Date ();
-    console.log(time);
-    const{bikeName,picture,location,used,resaleprice,originalprice}=bike;
+const Advertisingbike = ({market}) => {
+    const{bikeName,picture,location,used,resaleprice,originalprice}=market;
     console.log(bikeName);
      
 
@@ -23,13 +19,13 @@ const SingleBike = ({ bike, setvehicle }) => {
                     <p  className='text-sm lg:text-xl  font-bold'>Posted Time: </p>
 
                     <div className="card-actions justify-end">
-                    <label htmlFor="booking-modal" onClick={()=>setvehicle(bike)} className="btn btn-primary">Buy Now</label>
+                    <label htmlFor="booking-modal" className="btn btn-primary">Buy Now</label>
                     </div>
                 </div>
             </div>
          
         </div>
-    );
+    )
 };
 
-export default SingleBike;
+export default Advertisingbike;

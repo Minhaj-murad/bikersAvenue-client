@@ -1,15 +1,20 @@
 
-import React, { useContext } from 'react';
+import React, { useContext,} from 'react';
 import { AuthContext } from '../../../../../../../Authprovider/Authprovider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const BookingModal = ({ bikeName, location, resaleprice }) => {
+const BookingModal = ({vehicle,setvehicle,refetch}) => {
     const { user } = useContext(AuthContext);
-    // const date 
-     console.log(bikeName);
+    const {bikeName,resaleprice}=vehicle;
+
+
+
+
+    // const { bikeName, location, resaleprice, email } = bike;
+    // console.log(bikeName);
     const handlebooking = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -20,41 +25,37 @@ const BookingModal = ({ bikeName, location, resaleprice }) => {
         const location = form.location.value;
         console.log(email, location, phone, name);
         form.reset()
-        const customer ={
+        const customer = {
 
             phone,
-            customername:name,
-            bikeName:bikeName,
+            customername: name,
+            // bikeName: bikeName,
             email,
             location,
-            price:resaleprice
+            // price: resaleprice
 
         }
-        fetch('http://localhost:5000/bookings' , {
-            method:'POST',
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(customer)
+            body: JSON.stringify(customer)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.acknowledged){
-                toast.success('Booking Added Successfully')
-            }
-            else{
-                toast.warning(data.message)
-            }
-        })
-       
-        
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    setvehicle(null)
+                    toast.success('Booking Added Successfully')
+                }
+                else {
+                    toast.warning(data.message)
+                }
+            })
+
+
     }
-
-
-
-
-
 
     return (
         <div>
@@ -67,8 +68,8 @@ const BookingModal = ({ bikeName, location, resaleprice }) => {
 
                         <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full mt-6" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email" className="input input-bordered w-full mt-6" />
-                        <input name='bikename' type="text" disabled placeholder="Bikename" className="input input-bordered w-full mt-6" value={bikeName} />
-                        <input name='price' type="text" disabled placeholder="Resale Price" className="input input-bordered w-full mt-6" value={resaleprice} />
+                        <input name='bikename' type="text" placeholder="Bikename" className="input input-bordered w-full mt-6" defaultValue={bikeName} />
+                        <input name='price' type="text" disabled placeholder="Resale Price" className="input input-bordered w-full mt-6" defaultValue={resaleprice} />
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full mt-6" />
                         <input name='location' type="text" placeholder="Location" className="input input-bordered w-full mt-6" />
                         <br /> <input type="submit" className='btn btn-accent w-full mt-6' value="Submit" />
@@ -86,6 +87,7 @@ const BookingModal = ({ bikeName, location, resaleprice }) => {
                 draggable
                 pauseOnHover
                 theme="light" />
+
         </div>
     );
 };

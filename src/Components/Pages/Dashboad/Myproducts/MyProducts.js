@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../Authprovider/Authprovider';
 
 
@@ -26,10 +27,26 @@ const MyProducts = () => {
 
         }
     })
-    const handleadvertise = ()=>{
-        console.log('btn clicked');
+    const handleadvertise = (customer)=>{
+           
+        fetch('http://localhost:5000/users/advertise',{
+            method:'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(customer)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data.acknowledged){
+                toast.success('Advertise Added Successfully')
+            }
+            else{
+                toast.warning(data.message)
+            }
+        })
     }
-
     return (
         <div>
             <h1 className='text-4xl text-white text-center mr-8'> My Products</h1>
@@ -56,7 +73,7 @@ const MyProducts = () => {
                                 <td>{customer.bikeName}</td>
                                 <td>{customer.phone}</td>
                                 <td>{customer.location}</td>
-                                <td>{ <button onClick={() => handleadvertise(customer._id)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
+                                <td>{ <button onClick={() => handleadvertise(customer)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
                                 <td>{customer.resaleprice}</td>
                             </tr>
                             )
