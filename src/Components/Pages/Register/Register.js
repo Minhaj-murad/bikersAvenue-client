@@ -17,6 +17,8 @@ const Register = () => {
     const[createduseremail,setcreateduseremail]=useState('')
      const [token]=useToken(createduseremail);
      const navigate =useNavigate()
+
+
     const handleSignUp = (data) => {
 
         if(token){
@@ -24,7 +26,7 @@ const Register = () => {
         }
     
         setSignUPError('');
-        createUser(data.email, data.password)
+        createUser(data.email, data.password, data.role)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -34,7 +36,7 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email,data.role);
                     })
                     .catch(err => console.log(err));
             })
@@ -44,8 +46,8 @@ const Register = () => {
             });
     }
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email,role) => {
+        const user = { name, email,role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -118,10 +120,10 @@ const Register = () => {
                             <input {...register("name", { required: "Name  is required" })} className="input input-bordered w-full max-w-xs" />
                         </div>
 
-                        <select className="select select-bordered w-full max-w-xs mt-8">
+                        <select {...register("role", { required: "buyer  is required" })} className="select select-bordered w-full max-w-xs mt-8">
                             <option disabled selected>Select Your Choice</option>
-                            <option {...register("buyer", { required: "buyer  is required" })} >Buyer</option>
-                            <option {...register("seller", { required: "seller  is required" })}>Seller</option>
+                            <option value="buyer">Buyer</option>
+                            <option value='seller' >Seller</option>
                         </select>
 
 

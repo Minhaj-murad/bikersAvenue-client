@@ -26,11 +26,13 @@ const MyProducts = () => {
 
         }
     })
-    
+    const handleadvertise = ()=>{
+        console.log('btn clicked');
+    }
 
     return (
         <div>
-            <h1 className='text-4xl text-white text-center mr-8'> My Orders</h1>
+            <h1 className='text-4xl text-white text-center mr-8'> My Products</h1>
             <div className="overflow-x-auto mt-8 mr-8">
                 <table className="table w-full">
                     <thead>
@@ -39,9 +41,10 @@ const MyProducts = () => {
                             <th>Name</th>
                             <th>Bikename</th>
                             <th>Phone</th>
-                            <th>Locaton</th>
+                            <th>Location</th>
+                            <th>Advertise</th>
                             <th>Price</th>
-                            <th>Price</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +56,7 @@ const MyProducts = () => {
                                 <td>{customer.bikeName}</td>
                                 <td>{customer.phone}</td>
                                 <td>{customer.location}</td>
+                                <td>{ <button onClick={() => handleadvertise(customer._id)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
                                 <td>{customer.resaleprice}</td>
                             </tr>
                             )

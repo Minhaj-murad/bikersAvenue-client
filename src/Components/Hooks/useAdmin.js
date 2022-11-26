@@ -9,6 +9,7 @@ const useAdmin = email => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    // found this data.isAdmin from server route as role
                     setIsAdmin(data.isAdmin);
                     setIsAdminLoading(false);
                 })

@@ -5,6 +5,7 @@ import Main from '../Components/Layout/Main';
 import AddProduct from '../Components/Pages/Dashboad/AddProduct/AddProduct';
 import AllBuyers from '../Components/Pages/Dashboad/AllBuyers';
 import Allsellers from '../Components/Pages/Dashboad/Allsellers/Allsellers';
+import Allusers from '../Components/Pages/Dashboad/Allusers';
 import MyBookings from '../Components/Pages/Dashboad/MyBookings/MyBookings';
 import MyProducts from '../Components/Pages/Dashboad/Myproducts/MyProducts';
 import Brand from '../Components/Pages/Home/Catagoories/Brands/Brand/Brand';
@@ -13,7 +14,9 @@ import Home from '../Components/Pages/Home/Home';
 import Login from '../Components/Pages/Login/Login';
 import MyBlog from '../Components/Pages/MyBlog/MyBlog';
 import Register from '../Components/Pages/Register/Register';
+import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 import AdminRoute from '../Components/ProtectedRoute/AdminRoute';
+import SellerRoute from '../Components/ProtectedRoute/SellerRoute';
 // import PrivateRoute from '../Components/PrivateRoute/PrivateRoute';
 
 import ErrorPage from '../Components/Shared/ErrorPage/ErrorPage';
@@ -62,23 +65,27 @@ const router = createBrowserRouter([
     },
     {
             path:'/dashboard',
-            element:<DashBoardLayout></DashBoardLayout>,
+            element:<PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
             children:[
                 {
-                    path:'/dashboard',
+                    path:'/dashboard/myorders',
                     element:<MyBookings></MyBookings>,
                 },
                 {
+                    path:'/dashboard/allusers',
+                    element:<AdminRoute><Allusers></Allusers></AdminRoute>,
+                },
+                {
                     path:'/dashboard/allbuyers',
-                    element:<AllBuyers></AllBuyers>,
+                    element:<AdminRoute><AllBuyers></AllBuyers></AdminRoute>,
                 },
                 {
                     path:'/dashboard/allsellers',
-                    element:<Allsellers></Allsellers>,
+                    element:<AdminRoute><Allsellers></Allsellers></AdminRoute>,
                 },
                 {
                     path:'/dashboard/addbike',
-                    element:<AddProduct></AddProduct>,
+                    element:<SellerRoute><AddProduct></AddProduct></SellerRoute>,
     
                 },
                 {
