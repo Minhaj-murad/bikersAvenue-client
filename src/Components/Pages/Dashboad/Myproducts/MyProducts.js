@@ -17,11 +17,11 @@ const MyProducts = () => {
                 console.log(data);
                 return data;
             }
-
+            
 
         }
     })
-
+    
 
     return (
         <div>
@@ -35,6 +35,7 @@ const MyProducts = () => {
                             <th>Bikename</th>
                             <th>Phone</th>
                             <th>Locaton</th>
+                            <th>Price</th>
                             <th>Price</th>
                         </tr>
                     </thead>

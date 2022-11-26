@@ -5,8 +5,8 @@ import useAdmin from '../../Hooks/useAdmin';
 import Header from '../../Shared/Header/Header';
 
 const DashBoardLayout = () => {
-    const{user}=useContext(AuthContext)
-    const[isAdmin]=useAdmin(user?.email)
+    const { user } = useContext(AuthContext)
+    const [isAdmin] = useAdmin(user?.email)
     return (
         <div>
             <Header></Header>
@@ -24,10 +24,8 @@ const DashBoardLayout = () => {
                         <li className='bg-gray-700 font-semibold max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
                         <li className='bg-gray-700 font-semibold max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/addbike'>Add Bike</Link></li>
                         <li className='bg-gray-700 font-semibold max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/myproducts'>My Products</Link></li>
-                             
-                        {
-                        isAdmin &&   <li className='bg-gray-700 font-semibold max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
-                        }
+                        <li className='bg-gray-700 font-semibold max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/allsellers'>All sellers</Link></li>
+
 
 
 

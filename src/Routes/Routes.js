@@ -4,6 +4,7 @@ import DashBoardLayout from '../Components/Layout/DashBoardLayout/DashBoardLayou
 import Main from '../Components/Layout/Main';
 import AddProduct from '../Components/Pages/Dashboad/AddProduct/AddProduct';
 import AllBuyers from '../Components/Pages/Dashboad/AllBuyers';
+import Allsellers from '../Components/Pages/Dashboad/Allsellers/Allsellers';
 import MyBookings from '../Components/Pages/Dashboad/MyBookings/MyBookings';
 import MyProducts from '../Components/Pages/Dashboad/Myproducts/MyProducts';
 import Brand from '../Components/Pages/Home/Catagoories/Brands/Brand/Brand';
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
                 {
                     path:'/dashboard/allbuyers',
                     element:<AllBuyers></AllBuyers>,
+                },
+                {
+                    path:'/dashboard/allsellers',
+                    element:<Allsellers></Allsellers>,
                 },
                 {
                     path:'/dashboard/addbike',

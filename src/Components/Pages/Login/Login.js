@@ -28,6 +28,8 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .then(error => console.log(error));
+
+            
     }
     const handlegooglesign = () => {
         googlesignin(googleprovider)
