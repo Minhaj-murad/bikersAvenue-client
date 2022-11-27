@@ -42,7 +42,7 @@ const AddProduct = () => {
                         phone: data.phonenumber,
                         used:data.year,
                         condition:data.condition,
-                        
+                        status:'available',
 
 
                     }

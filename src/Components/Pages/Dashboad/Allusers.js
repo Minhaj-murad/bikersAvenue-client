@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { toast, ToastContainer } from 'react-toastify';
-
+import Loader from '../../Loader/Loader';
+// import Loader from '../../Loader/Loader'
 const Allusers = () => {
 
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users');
@@ -12,6 +13,9 @@ const Allusers = () => {
             return data;
         }
     });
+    if (isLoading) {
+        return <Loader></Loader>
+    }
     console.log(users);
     const handlemakeAdmin = (id) => {
         fetch(`http://localhost:5000/users/admin/${id}`, {

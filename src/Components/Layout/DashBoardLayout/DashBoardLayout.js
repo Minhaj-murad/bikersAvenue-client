@@ -10,6 +10,7 @@ const DashBoardLayout = () => {
     const { user } = useContext(AuthContext)
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
+
     return (
         <div>
             <Header></Header>
@@ -24,6 +25,7 @@ const DashBoardLayout = () => {
                     <ul className="menu p-4 w-80 text-white  ">
 
                         <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/myorders'>My Orders</Link></li>
+                        <li className='bg-gray-700 font-semibold w-full  max-w-xs mx-auto rounded-xl shadow-2xl mt-4'><Link to='/dashboard/wishlist'> My WishLists</Link></li>
 
                         {
                             isSeller && <>

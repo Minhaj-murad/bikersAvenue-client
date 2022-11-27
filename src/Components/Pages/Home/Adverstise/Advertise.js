@@ -1,20 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Advertisingbike from './Advertisingbike';
 
-const Advertise = () => {
+const Advertise = ({marketting}) => {
 
-     const [marketting,setmarketting]=useState([]);
      
-     useEffect(()=>{
-     fetch('http://localhost:5000/advertises')
-     .then(res => res.json())
-     .then(data => {
-      console.log(data);
-      setmarketting(data)
-    })
-
-     },[])
-       
 
     return (
        <div>

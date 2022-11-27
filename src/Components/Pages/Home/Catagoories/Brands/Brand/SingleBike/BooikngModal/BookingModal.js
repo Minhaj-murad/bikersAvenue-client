@@ -8,15 +8,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const BookingModal = ({vehicle,setvehicle,refetch}) => {
     const { user } = useContext(AuthContext);
+     console.log(vehicle);
+    const {bikeName,originalprice,resaleprice,picture}= vehicle;
+    
 
+    //  const [bikeName, setBikeName] = useState('')
+    //  const [bikePrice, setBikePrice] = useState('')
 
-     const [bikeName, setBikeName] = useState('')
-     const [bikePrice, setBikePrice] = useState('')
-
-     useEffect(() => {
-         setBikeName(vehicle?.bikeName)
-         setBikePrice(vehicle?.resaleprice)
-     },[vehicle?.bikeName,vehicle?.resaleprice ])
+    //  useEffect(() => {
+    //      setBikeName(vehicle?.bikeName)
+    //      setBikePrice(vehicle?.resaleprice)
+    //  },[vehicle?.bikeName,vehicle?.resaleprice ])
 
 
     // const { bikeName, location, resaleprice, email } = bike;
@@ -28,18 +30,23 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
         const name = form.name.value;
         const email = form.email.value;
         const phone = form.phone.value;
+        const bikeName = form.bikeName.value;
+        const resaleprice = form.resaleprice.value;
+        const originalprice = form.originalprice.value;
         const location = form.location.value;
-        console.log(email, location, phone, name);
+        console.log(email, location, phone, bikeName);
         form.reset()
         const customer = {
 
             phone,
+            picture,
             customername: name,
-            // bikeName: bikeName,
+            bikeName,
             email,
             location,
-            // price: resaleprice
-
+            resaleprice,
+            originalprice,
+            availability:'sold'
         }
         fetch('http://localhost:5000/bookings', {
             method: 'POST',
@@ -52,7 +59,7 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    setvehicle(null)
+                   
                     toast.success('Booking Added Successfully')
                 }
                 else {
@@ -68,31 +75,24 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
             <input type="checkbox" id="booking-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">
-                    <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label onClick={()=>setvehicle(null)} htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 
                     <form onSubmit={handlebooking} >
 
                         <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full mt-6" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email" className="input input-bordered w-full mt-6" />
-                        <p>{bikeName}</p>
-                        <p>{bikePrice}</p>
-                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full mt-6" />
+                      
+                        <input name='bikeName' type="text" defaultValue={bikeName} className="input input-bordered w-full mt-6" />
+                        <input name='resaleprice' type="text" defaultValue={resaleprice} className="input input-bordered w-full mt-6" />
+                        <input name='originalprice' type="text" defaultValue={originalprice} className="input input-bordered w-full mt-6" />
+                        <input name='phone' type="text" placeholder="Your Phone Number" className="input input-bordered w-full mt-6" />
                         <input name='location' type="text" placeholder="Location" className="input input-bordered w-full mt-6" />
                         <br /> <input type="submit" className='btn btn-accent w-full mt-6' value="Submit" />
 
                     </form>
                 </div>
             </div>
-            <ToastContainer position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light" />
+            <ToastContainer  />
 
         </div>
     );

@@ -1,16 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../Authprovider/Authprovider';
+import Loader from '../../../Loader/Loader';
 
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const url = `http://localhost:5000/sellerbikes?email=${user?.email}`
+      
+    // const [customers,setCustomers]=useState([]);
+    // useEffect(()=>{
+    //     fetch('http://localhost:5000/customers')
+    //     .then(res => res.json())
+    //     .then(data => setCustomers(data))
+    // },[])
+    // console.log(customers);
+    // const available= customers.map(buyer => buyer.availability)
+    // console.log(available);
+    //  const [available, setavailable]=useState(false)
+    // //   const avaialablebutton =(seller)=>{
+    // //     setavailable(!available)
+    // //   }
 
-
-    const { data: customers = [] } = useQuery({
-        queryKey: ['customers', user?.email],
+    const { data: sellers = [],isLoading ,refetch} = useQuery({
+        queryKey: ['sellers', user?.email],
         queryFn: async () => {
             if (user?.email) {
                 const res = await fetch(url, {
@@ -27,47 +41,31 @@ const MyProducts = () => {
 
         }
     })
-    const handleadvertise = (customer) => {
-        const customerdata = {
-            bikeName
-                :
-                customer.bikeName,
-            catagoryid
-                :
-                customer.catagoryid,
-            email
-                :
-                customer.email,
-            location
-                :
-                customer.location,
-            originalprice
-                :
-                customer.originalprice,
-            picture
-                :
-                customer.picture,
-            resaleprice
-                :
-                customer.resaleprice,
-            seller
-                :
-                customer.seller,
-            sellerid
-                :
-                customer.sellerid,
-
-            customerid
-                :
-                customer._id
+    if (isLoading) {
+        return <Loader></Loader>
+    }
+    console.log(sellers);
+    const handleadvertise = (seller) => {
+        const sellerdata = {
+            bikeName : seller.bikeName,
+            catagoryid : seller.catagoryid,
+            email : seller.email,
+            location : seller.location,
+            originalprice : seller.originalprice,
+            picture : seller.picture,
+            resaleprice : seller.resaleprice,
+            seller : seller.seller,
+            
+            sellerid : seller._id, 
+            
         }
-        console.log(customerdata);
+        console.log(sellerdata);
         fetch('http://localhost:5000/advertises', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(customerdata)
+            body: JSON.stringify(sellerdata)
         })
             .then(res => res.json())
             .then(data => {
@@ -80,6 +78,41 @@ const MyProducts = () => {
                 }
             })
     }
+
+  
+     const handlestatus =(id)=>{
+        fetch(`http://localhost:5000/sellerbikes/${id}`,{
+            method:'PUT',
+            // for verifyjwt we have to use bearer in headers
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success('Status Changed Succesfully')
+                
+            }
+        })
+    }
+        const handledelete =(id)=>{
+            fetch(`http://localhost:5000/sellerbikes/${id}`, {
+            method: 'DELETE', 
+            // headers: {
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                
+                 toast(' Deleted Successfully.')
+                 refetch()
+            }
+        })
+        }
+     
     return (
         <div>
             <h1 className='text-4xl text-white text-center mr-8'> My Products</h1>
@@ -92,22 +125,45 @@ const MyProducts = () => {
                             <th>Bikename</th>
                             <th>Phone</th>
                             <th>Location</th>
+                            <th>Availability</th>
                             <th>Advertise</th>
                             <th>Price</th>
+                            <th>Delete</th>
 
                         </tr>
                     </thead>
                     <tbody>
 
                         {
-                            customers.map((customer, i) => <tr>
+                            sellers.map((seller, i) => <tr>
                                 <th>{i + 1}</th>
-                                <td>{customer.seller}</td>
-                                <td>{customer.bikeName}</td>
-                                <td>{customer.phone}</td>
-                                <td>{customer.location}</td>
-                                <td>{<button onClick={() => handleadvertise(customer)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
-                                <td>{customer.resaleprice}</td>
+                                <td>{seller.seller}</td>
+                                <td>{seller.bikeName}</td>
+                                <td>{seller.phone}</td>
+                                <td>{seller.location}</td>
+                                <td>{
+                                    seller.status !=='available' ? <>
+                                    <button  className='btn btn-xs btn-accent'>Sold</button>
+                                    </>
+                                     : 
+                                     <>
+                                    <button onClick={()=>handlestatus(seller._id)}   className='btn btn-xs btn-accent'>Available</button></>
+                                    }
+                                    
+                                </td>
+                                <td>{
+                                     seller.status ==='available' ? <>
+                                    {<button onClick={() => handleadvertise(seller)} className='btn btn-xs btn-accent'>Advertise</button>}
+                                    </>
+                                    :
+                                    <>
+                                    {<button disabled className='btn btn-xs btn-accent'>Advertised</button>}
+                                    </>
+                                    
+                                    }
+                                    </td>
+                                <td>{seller.resaleprice}</td>
+                                <td> {<button onClick={()=>handledelete(seller._id)} className='btn btn-xs btn-accent'>Delete</button>}</td>
                             </tr>
                             )
                         }

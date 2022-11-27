@@ -8,7 +8,7 @@ const Brand = () => {
     console.log(bikes);
     const [vehicle,setvehicle]=useState(null);
     return (
-        <div className='grid sm:grid-cols-1 lg:grid-cols-2'>
+        <div className='grid sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-fit mx-auto'>
             {
                 bikes.map(bike => <SingleBike
                     key={bike._id} bike={bike}
