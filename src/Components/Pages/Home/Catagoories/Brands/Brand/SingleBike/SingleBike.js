@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import BookingModal from './BooikngModal/BookingModal';
 
 const SingleBike = ({ bike, setvehicle }) => {
     console.log(bike);
     const time =new Date ();
     console.log(time);
-    const{bikeName,picture,location,used,resaleprice,originalprice}=bike;
+    const{bikeName,picture,location,used,resaleprice,originalprice,email}=bike;
     console.log(bikeName);
+
+
+    const [verified,setVerified] = useState(false)
+    const [data,setData] = useState([])
+
+    useEffect(() => {
+         fetch('http://localhost:5000/users')
+        .then(res => res.json())
+        .then(data=> setData(data.find(a => a.email === email)))
+    },[email])
+
+
+    useEffect(() => {
+      if(data?.type === 'verified'){
+        setVerified(true)
+      }
+      else{
+        setVerified(false)
+      }
+    },[data?.type])
+
+    console.log(verified);
      
 
     return (
@@ -21,7 +43,9 @@ const SingleBike = ({ bike, setvehicle }) => {
                    </div>
                     <p  className='text-sm lg:text-xl  font-bold'>Duration of use: {used}</p>
                     <p  className='text-sm lg:text-xl  font-bold'>Posted Time: </p>
-
+                {
+                    email && <h1>email found</h1>
+                }
                     <div className="card-actions justify-end">
                     <label htmlFor="booking-modal" onClick={()=>setvehicle(bike)} className="btn btn-primary">Buy Now</label>
                     </div>

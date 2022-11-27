@@ -1,5 +1,5 @@
 // import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 // import Loader from '../../../Loader/Loader'
@@ -9,12 +9,14 @@ import { AuthContext } from '../../../Authprovider/Authprovider';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
+    console.log(user);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbbkey;
     console.log(imageHostKey);
     const navigate = useNavigate();
 
     const handleAddBike = (data) => {
+
         const picture = data.picture[0];
         const formData = new FormData();
         formData.append('image', picture);
@@ -39,7 +41,9 @@ const AddProduct = () => {
                         catagoryid: data.catagoryid,
                         phone: data.phonenumber,
                         used:data.year,
-                        condition:data.condition
+                        condition:data.condition,
+                        
+
 
                     }
 

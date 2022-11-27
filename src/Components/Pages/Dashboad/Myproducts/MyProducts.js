@@ -13,7 +13,7 @@ const MyProducts = () => {
         queryKey: ['customers', user?.email],
         queryFn: async () => {
             if (user?.email) {
-                const res = await fetch(url,{
+                const res = await fetch(url, {
                     //  to get accesstoken from server and after signing up from localstorage
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -23,29 +23,62 @@ const MyProducts = () => {
                 console.log(data);
                 return data;
             }
-            
+
 
         }
     })
-    const handleadvertise = (customer)=>{
-           
-        fetch('http://localhost:5000/users/advertise',{
-            method:'POST',
+    const handleadvertise = (customer) => {
+        const customerdata = {
+            bikeName
+                :
+                customer.bikeName,
+            catagoryid
+                :
+                customer.catagoryid,
+            email
+                :
+                customer.email,
+            location
+                :
+                customer.location,
+            originalprice
+                :
+                customer.originalprice,
+            picture
+                :
+                customer.picture,
+            resaleprice
+                :
+                customer.resaleprice,
+            seller
+                :
+                customer.seller,
+            sellerid
+                :
+                customer.sellerid,
+
+            customerid
+                :
+                customer._id
+        }
+        console.log(customerdata);
+        fetch('http://localhost:5000/advertises', {
+            method: 'POST',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(customer)
+            body: JSON.stringify(customerdata)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.acknowledged){
-                toast.success('Advertise Added Successfully')
-            }
-            else{
-                toast.warning(data.message)
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success('Advertise Added Successfully')
+                }
+                else {
+                    toast.warning(data.message)
+                }
+            })
     }
     return (
         <div>
@@ -61,7 +94,7 @@ const MyProducts = () => {
                             <th>Location</th>
                             <th>Advertise</th>
                             <th>Price</th>
-                           
+
                         </tr>
                     </thead>
                     <tbody>
@@ -73,7 +106,7 @@ const MyProducts = () => {
                                 <td>{customer.bikeName}</td>
                                 <td>{customer.phone}</td>
                                 <td>{customer.location}</td>
-                                <td>{ <button onClick={() => handleadvertise(customer)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
+                                <td>{<button onClick={() => handleadvertise(customer)} className='btn btn-xs btn-accent'>Advertise</button>}</td>
                                 <td>{customer.resaleprice}</td>
                             </tr>
                             )

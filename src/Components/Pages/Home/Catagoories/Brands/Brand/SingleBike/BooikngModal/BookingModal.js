@@ -1,5 +1,5 @@
 
-import React, { useContext,} from 'react';
+import React, { useContext, useEffect, useState,} from 'react';
 import { AuthContext } from '../../../../../../../Authprovider/Authprovider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,13 +8,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const BookingModal = ({vehicle,setvehicle,refetch}) => {
     const { user } = useContext(AuthContext);
-    const {bikeName,resaleprice}=vehicle;
 
 
+     const [bikeName, setBikeName] = useState('')
+     const [bikePrice, setBikePrice] = useState('')
+
+     useEffect(() => {
+         setBikeName(vehicle?.bikeName)
+         setBikePrice(vehicle?.resaleprice)
+     },[vehicle?.bikeName,vehicle?.resaleprice ])
 
 
     // const { bikeName, location, resaleprice, email } = bike;
-    // console.log(bikeName);
+    console.log(vehicle);
     const handlebooking = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -68,8 +74,8 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
 
                         <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full mt-6" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Email" className="input input-bordered w-full mt-6" />
-                        <input name='bikename' type="text" placeholder="Bikename" className="input input-bordered w-full mt-6" defaultValue={bikeName} />
-                        <input name='price' type="text" disabled placeholder="Resale Price" className="input input-bordered w-full mt-6" defaultValue={resaleprice} />
+                        <p>{bikeName}</p>
+                        <p>{bikePrice}</p>
                         <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full mt-6" />
                         <input name='location' type="text" placeholder="Location" className="input input-bordered w-full mt-6" />
                         <br /> <input type="submit" className='btn btn-accent w-full mt-6' value="Submit" />

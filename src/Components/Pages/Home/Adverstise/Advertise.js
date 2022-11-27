@@ -3,7 +3,7 @@ import Advertisingbike from './Advertisingbike';
 
 const Advertise = () => {
 
-     const [marketting,setmarketting]=useState('');
+     const [marketting,setmarketting]=useState([]);
      
      useEffect(()=>{
      fetch('http://localhost:5000/advertises')
@@ -18,15 +18,15 @@ const Advertise = () => {
 
     return (
        <div>
-         <div className='mt-12 h-[800px]  '>
+         <div className='mt-12  '>
                
            <div className='grid grid-cols-2'>
-           {/* {
-              marketting.map(market => <Advertisingbike
+           {
+              marketting?.map(market => <Advertisingbike
                 
                 market={market}
               ></Advertisingbike>)
-            } */}
+            }
            </div>
         </div>
        </div>
