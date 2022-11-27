@@ -1,9 +1,10 @@
 import React from 'react';
 import img from '../../../assests/logo/logo1.webp'
+import './Footer.css'
 const Footer = () => {
     return (
-        <div>
-           
+        <div className='home'>
+             <h1 className='text-white text-center  text-5xl font-bold mt-12 mb-4'>Contact US</h1><hr />
     <div className="relative mt-16">
    
       

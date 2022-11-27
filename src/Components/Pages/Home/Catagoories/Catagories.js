@@ -7,7 +7,7 @@ const Catagories = () => {
     console.log(companies);
     return (
         <div>
-            <h1 className='text-white text-center font-serif text-4xl font-bold mt-12'>Our Most Popular Brand catagories</h1>
+            <h1 className='text-white text-center  text-5xl font-bold mt-12 mb-4'>Our Most Popular Brand catagories</h1><hr />
 
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 p-8'>
                 {

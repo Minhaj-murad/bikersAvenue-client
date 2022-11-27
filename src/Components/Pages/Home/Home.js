@@ -3,7 +3,7 @@ import Advertise from './Adverstise/Advertise';
 import Banner from './Banner/Banner';
 import Catagories from './Catagoories/Catagories';
 import { Content } from './Content/Content';
-
+import './Home.css'
 const Home = () => {
 
     const [marketting,setmarketting]=useState([]);
@@ -19,7 +19,7 @@ const Home = () => {
      },[])
        
     return (
-        <div>
+        <div className='home'>
             <div className="min-h-screen ">
              
                <Banner></Banner> 

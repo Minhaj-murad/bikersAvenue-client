@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../assests/logo/logo1.webp'
 import { AuthContext } from '../../Authprovider/Authprovider';
-
+import './Header.css'
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
   const navigate=useNavigate()

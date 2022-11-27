@@ -11,7 +11,7 @@ const SingleBike = ({ bike, setvehicle }) => {
   console.log(bike);
   const time = new Date();
   console.log(time);
-  const { bikeName, picture, location, used, resaleprice, originalprice, email, availability } = bike;
+  const { bikeName, picture, location, used, resaleprice, originalprice, email,seller, availability } = bike;
   console.log(bikeName);
 
 
@@ -80,13 +80,17 @@ const SingleBike = ({ bike, setvehicle }) => {
         <div className="card-body">
          <div className='flex justify-between'>
          <h2 className="text-xl font-bold">{bikeName}</h2>
-          <button onClick={() => handlewish()} className='btn btn-warning max-w-[60px]'>Wishlist </button>
+         <h2 className="text-lg font-bold">{seller}</h2>
+         
          </div>
           <div className='flex justify-between'>
             <p className='font-bold text-md'>ShowRoom Price:{originalprice}</p> <p className='font-bold text-md'>Resale Price: {resaleprice}</p>
           </div>
-          <div className="card-actions justify-end">
-
+          <div className='flex justify-between'>
+            <p className='font-bold text-md'>Location:{location}</p> <p className='font-bold text-md'>Used: {used}</p>
+          </div>
+          <div className="card-actions justify-between">
+          <button onClick={() => handlewish()} className='btn btn-warning max-w-sm'>Add to Wishlist </button>
             <label htmlFor="booking-modal" onClick={() => setvehicle(bike)} className="btn btn-primary">Buy Now</label>
 
           </div>
