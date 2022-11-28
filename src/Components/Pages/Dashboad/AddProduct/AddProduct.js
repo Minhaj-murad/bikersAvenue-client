@@ -157,14 +157,14 @@ const AddProduct = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text text-lg font-semibold text-white">Bike Catagories</span></label>
-                        <select
+                        <select required
                             {...register('catagoryid')}
                             className="select input-bordered w-full max-w-xs text-black">
 
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
+                            <option value={1}>Yamaha</option>
+                            <option value={2}>Suzuki</option>
+                            <option value={3}>TVS</option>
+                            <option value={4}>Pulsar</option>
 
 
                         </select>
