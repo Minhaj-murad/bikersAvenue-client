@@ -12,16 +12,7 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
     const {bikeName,originalprice,resaleprice,picture}= vehicle;
     
 
-    //  const [bikeName, setBikeName] = useState('')
-    //  const [bikePrice, setBikePrice] = useState('')
-
-    //  useEffect(() => {
-    //      setBikeName(vehicle?.bikeName)
-    //      setBikePrice(vehicle?.resaleprice)
-    //  },[vehicle?.bikeName,vehicle?.resaleprice ])
-
-
-    // const { bikeName, location, resaleprice, email } = bike;
+   
     console.log(vehicle);
     const handlebooking = (e) => {
         e.preventDefault()

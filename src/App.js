@@ -8,7 +8,7 @@ function App() {
   return (
 
     <div className=' background'>
-      <div className='outlet'>
+      <div className='outlet all-text'>
         <RouterProvider router={router}> </RouterProvider>
         <ToastContainer></ToastContainer>
         <Toaster></Toaster>

@@ -64,7 +64,7 @@ const SingleBike = ({ bike, setvehicle }) => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.modifiedCount > 0) {
+        if (data.acknowledged) {
           toast.success('Added to WishList Succesfully')
 
         }

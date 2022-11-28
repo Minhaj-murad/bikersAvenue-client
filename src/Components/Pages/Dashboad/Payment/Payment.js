@@ -8,7 +8,7 @@ import Checkout from './Checkout/Checkout';
 
 
 
-const stripePromise = loadStripe('pk_test_51M5vp5Jv1ZDGvic901SWD45Wcoev34ma6vOG4qDqDKrNoy9UpMBimVcQK3VHC3KvcBnlmNyLEEZXC8Ud4XOpR52k00cD07VR4x');
+const stripePromise = loadStripe(process.env.REACT_APP_StripePk);
 console.log(stripePromise);
 
 const Payment = () => {
@@ -20,7 +20,7 @@ const Payment = () => {
             <p className='text-4xl text-white text-center'>Payment for : {booking.bikeName}</p>
             <p className='text-2xl text-white text-center mt-8'>Please pay ${booking.resaleprice}  </p>
 
-            <div className='w-96 mt-12 h-48 bg-white'>
+            <div className='w-96 h-auto mx-auto mt-12  bg-gray-200 rounded-2xl shadow-2xl'>
                 <Elements stripe={stripePromise}>
                     <Checkout booking={booking}/>
                 </Elements>
