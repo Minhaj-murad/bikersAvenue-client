@@ -67,7 +67,7 @@ const AddProduct = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
-                            toast(`${data.name} is added successfully`);
+                            toast(`${data.bike} is added successfully`);
                             navigate('/dashboard/myproducts')
                         })
                 }
@@ -86,7 +86,7 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit(handleAddBike)} >
                 <div className='grid sm:grid-cols-1 lg:grid-cols-3 pl-8 mx-auto'>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text text-lg font-semibold text-white ">Name</span></label>
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white ">Seller Name</span></label>
                         <input type="text" {...register("name", {
                             required: "Name is Required"
                         })} className="input input-bordered w-full max-w-xs text-black" />
@@ -164,7 +164,7 @@ const AddProduct = () => {
                             <option value={1}>Yamaha</option>
                             <option value={2}>Suzuki</option>
                             <option value={3}>TVS</option>
-                            <option value={4}>Pulsar</option>
+                            <option value={4}>Bajaj</option>
 
 
                         </select>
