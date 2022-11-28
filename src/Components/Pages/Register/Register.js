@@ -31,6 +31,7 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 toast('User Created Successfully.')
+                navigate('/')
                 const userInfo = {
                     displayName: data.name
                 }
@@ -48,7 +49,7 @@ const Register = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment12-server-six.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -77,7 +78,7 @@ const Register = () => {
 
     const savebuyer = (name, email) => {
         const buyer = { name, email };
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment12-server-six.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -93,7 +94,7 @@ const Register = () => {
     //  Using JWTTOKEN in client side
 
     // const getUserToken = email => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://assignment12-server-six.vercel.app/jwt?email=${email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             if (data.accessToken) {

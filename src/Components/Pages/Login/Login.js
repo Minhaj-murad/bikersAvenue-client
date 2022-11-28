@@ -54,7 +54,7 @@ const Login = () => {
     //  how to use JWTTOKEN in client side
      
     const getUserToken = email =>{
-        fetch(`http://localhost:5000/jwt?email=${email}`)
+        fetch(`https://assignment12-server-six.vercel.app/jwt?email=${email}`)
         .then(res=> res.json())
         .then(data=>{
             if (data.accessToken){

@@ -30,7 +30,7 @@ const router = createBrowserRouter([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:()=>fetch('http://localhost:5000/bikecategories')
+                loader:()=>fetch('https://assignment12-server-six.vercel.app/bikecategories')
             },
             {
                 path:'/home',
@@ -57,7 +57,7 @@ const router = createBrowserRouter([
             {
                 path:'/bikecategories/:id',
                 element:<Brand></Brand>,
-                loader: ({params})=> fetch(`http://localhost:5000/motorbikes/${params.id}`)
+                loader: ({params})=> fetch(`https://assignment12-server-six.vercel.app/motorbikes/${params.id}`)
                 
             },
             
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
                 {
                     path: '/dashboard/payment/:id',
                     element: <Payment></Payment>,
-                    loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                    loader: ({params}) => fetch(`https://assignment12-server-six.vercel.app/bookings/${params.id}`)
                 },
             ]
     }

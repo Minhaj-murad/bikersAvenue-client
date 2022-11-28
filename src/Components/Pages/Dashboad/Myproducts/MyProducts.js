@@ -7,11 +7,11 @@ import Loader from '../../../Loader/Loader';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/sellerbikes?email=${user?.email}`
+    const url = `https://assignment12-server-six.vercel.app/sellerbikes?email=${user?.email}`
       
     // const [customers,setCustomers]=useState([]);
     // useEffect(()=>{
-    //     fetch('http://localhost:5000/customers')
+    //     fetch('https://assignment12-server-six.vercel.app/customers')
     //     .then(res => res.json())
     //     .then(data => setCustomers(data))
     // },[])
@@ -60,7 +60,7 @@ const MyProducts = () => {
             
         }
         console.log(sellerdata);
-        fetch('http://localhost:5000/advertises', {
+        fetch('https://assignment12-server-six.vercel.app/advertises', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -72,6 +72,7 @@ const MyProducts = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success('Advertise Added Successfully')
+                    refetch()
                 }
                 else {
                     toast.warning(data.message)
@@ -81,7 +82,7 @@ const MyProducts = () => {
 
   
      const handlestatus =(id)=>{
-        fetch(`http://localhost:5000/sellerbikes/${id}`,{
+        fetch(`https://assignment12-server-six.vercel.app/sellerbikes/${id}`,{
             method:'PUT',
             // for verifyjwt we have to use bearer in headers
             // headers: {
@@ -92,12 +93,12 @@ const MyProducts = () => {
         .then(data => {
             if(data.modifiedCount > 0){
                 toast.success('Status Changed Succesfully')
-                
+                refetch()
             }
         })
     }
         const handledelete =(id)=>{
-            fetch(`http://localhost:5000/sellerbikes/${id}`, {
+            fetch(`https://assignment12-server-six.vercel.app/sellerbikes/${id}`, {
             method: 'DELETE', 
             // headers: {
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`

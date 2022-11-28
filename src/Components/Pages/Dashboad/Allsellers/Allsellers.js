@@ -13,7 +13,7 @@ const Allsellers = () => {
     const { data: sellers = [], refetch, isLoading} = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://assignment12-server-six.vercel.app/users');
             const data = await res.json();
             return data.filter(allseller => allseller?.role === 'seller');
         }
@@ -26,7 +26,7 @@ const Allsellers = () => {
     // console.log(sellers);
 
     const handleverify=(seller)=>{
-         fetch(`http://localhost:5000/users/seller/${seller._id}`, {
+         fetch(`https://assignment12-server-six.vercel.app/users/seller/${seller._id}`, {
             method: 'PUT',
             // for verifyjwt we have to use bearer in headers
             headers: {
@@ -42,7 +42,7 @@ const Allsellers = () => {
             })
     }
     const handledelete =(user)=>{
-        fetch(`http://localhost:5000/users/seller/${user._id}`, {
+        fetch(`https://assignment12-server-six.vercel.app/users/seller/${user._id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -55,7 +55,7 @@ const Allsellers = () => {
                  toast(` ${user.name} Deleted Successfully.`)
             }
         })
-        fetch(`http://localhost:5000/users/sellerbike/${user.email}`, {
+        fetch(`https://assignment12-server-six.vercel.app/users/sellerbike/${user.email}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

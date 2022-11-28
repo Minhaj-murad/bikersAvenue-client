@@ -8,7 +8,7 @@ const Allusers = () => {
     const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://assignment12-server-six.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -18,7 +18,7 @@ const Allusers = () => {
     }
     console.log(users);
     const handlemakeAdmin = (id) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://assignment12-server-six.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             // for verifyjwt we have to use bearer in headers
             headers: {
@@ -34,7 +34,7 @@ const Allusers = () => {
             })
     }
     const handledelete =(user)=>{
-        fetch(`http://localhost:5000/users/seller/${user._id}`, {
+        fetch(`https://assignment12-server-six.vercel.app/users/seller/${user._id}`, {
             method: 'DELETE', 
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -56,7 +56,7 @@ const AddProduct = () => {
                     }
 
                     // save bike information to the database
-                    fetch(`http://localhost:5000/bikes`, {
+                    fetch(`https://assignment12-server-six.vercel.app/bikes`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

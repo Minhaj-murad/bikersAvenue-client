@@ -19,7 +19,7 @@ const SingleBike = ({ bike, setvehicle }) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/users')
+    fetch('https://assignment12-server-six.vercel.app/users')
       .then(res => res.json())
       .then(data => setData(data.find(a => a.email === email)))
   }, [email])
@@ -55,7 +55,7 @@ const SingleBike = ({ bike, setvehicle }) => {
     }
 
 
-    fetch(`http://localhost:5000/wishlists`, {
+    fetch(`https://assignment12-server-six.vercel.app/wishlists`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

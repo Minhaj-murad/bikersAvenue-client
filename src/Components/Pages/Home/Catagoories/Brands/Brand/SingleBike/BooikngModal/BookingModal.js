@@ -39,7 +39,7 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
             originalprice,
             availability:'sold'
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://assignment12-server-six.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const BookingModal = ({vehicle,setvehicle,refetch}) => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                   
+                    setvehicle(null)
                     toast.success('Booking Added Successfully')
                 }
                 else {

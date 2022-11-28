@@ -7,7 +7,7 @@ import Loader from '../../../Loader/Loader';
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://assignment12-server-six.vercel.app/bookings?email=${user?.email}`
     console.log(user);
 
     const { data: bookings = [], isLoading } = useQuery({
