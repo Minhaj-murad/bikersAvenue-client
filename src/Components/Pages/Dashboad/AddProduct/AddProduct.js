@@ -7,9 +7,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../../Authprovider/Authprovider';
 
+
+import 'react-day-picker/dist/style.css';
+
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
     console.log(user);
+    const today = new Date()
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbbkey;
     console.log(imageHostKey);
@@ -40,9 +47,10 @@ const AddProduct = () => {
                         picture: imgData.data.url,
                         catagoryid: data.catagoryid,
                         phone: data.phonenumber,
-                        used:data.year,
-                        condition:data.condition,
-                        status:'available',
+                        used: data.year,
+                        condition: data.condition,
+                        status: 'available',
+                        date:data.date
 
 
                     }
@@ -78,9 +86,16 @@ const AddProduct = () => {
             <form onSubmit={handleSubmit(handleAddBike)} >
                 <div className='grid sm:grid-cols-1 lg:grid-cols-3 pl-8 mx-auto'>
                     <div className="form-control w-full max-w-xs">
-                        <label  className="label"> <span className="label-text text-lg font-semibold text-white ">Name</span></label>
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white ">Name</span></label>
                         <input type="text" {...register("name", {
                             required: "Name is Required"
+                        })} className="input input-bordered w-full max-w-xs text-black" />
+                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white ">Date</span></label>
+                        <input value={date} type="text" {...register("date", {
+                            required: "Date is Required"
                         })} className="input input-bordered w-full max-w-xs text-black" />
                         {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
                     </div>
@@ -127,7 +142,7 @@ const AddProduct = () => {
                         {errors.bike && <p className='text-red-500'>{errors.bike.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Year Of Purchase</span></label>
+                        <label className="label"> <span className="label-text text-lg font-semibold text-white">Duration of Use</span></label>
                         <input type="text" {...register("year", {
                             required: true
                         })} className="input input-bordered w-full max-w-xs text-black" />
@@ -165,6 +180,7 @@ const AddProduct = () => {
                 <input className='btn btn-primary w-full max-w-xs mt-4 mx-auto ' value="Add Bike" type="submit" />
             </form>
             <ToastContainer />
+
         </div>
     );
 };

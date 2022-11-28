@@ -21,9 +21,9 @@ const Banner = () => {
                         data-aos-duration="500" className='car-image'>
                         <img src={img1} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div data-aos="fade-right"
-                        data-aos-offset="300"
-                        data-aos-easing="ease-in-sine" className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div data-aos="flip-left"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000" className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />
@@ -31,50 +31,65 @@ const Banner = () => {
 
                 </div>
                 <div id="item2" className="carousel-item relative w-full">
-                    <div className='car-image'>
+                    <div data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500" className='car-image'>
                         <img src={img4} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />
                     </div>
                 </div>
                 <div id="item3" className="carousel-item relative w-full">
-                    <div className='car-image'>
+                    <div data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500" className='car-image'>
                         <img src={img3} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />
                     </div>
                 </div>
                 <div id="item4" className="carousel-item relative w-full">
-                    <div className='car-image'>
+                    <div data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500" className='car-image'>
                         <img src={img2} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />
                     </div>
                 </div>
                 <div id="item5" className="carousel-item relative w-full">
-                    <div className='car-image'>
+                    <div data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500" className='car-image'>
                         <img src={img5} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />
                     </div>
                 </div>
                 <div id="item6" className="carousel-item relative w-full">
-                    <div className='car-image'>
+                    <div data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500" className='car-image'>
                         <img src={img6} alt='' className="car-img rounded-xl shadow-2xl " />
                     </div>
-                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-72">
+                    <div className="absolute w-[320px] lg:w-[400px] flex justify-end transform -translate-y-1/2 left-20 lg:left-80 top-56">
                         <h1 className='text-3xl lg:text-7xl   font-bold text-neutral-content home-text'>
                             Make your ride Awesome with BIKERSavenue!!!!!
                         </h1> <br />

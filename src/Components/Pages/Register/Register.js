@@ -14,17 +14,17 @@ const Register = () => {
     const googleprovider = new GoogleAuthProvider();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signUpError, setSignUPError] = useState('')
-    const[createduseremail,setcreateduseremail]=useState('')
-     const [token]=useToken(createduseremail);
-     const navigate =useNavigate()
+    const [createduseremail, setcreateduseremail] = useState('')
+    const [token] = useToken(createduseremail);
+    const navigate = useNavigate()
 
 
     const handleSignUp = (data) => {
 
-        if(token){
+        if (token) {
             navigate('/');
         }
-    
+
         setSignUPError('');
         createUser(data.email, data.password, data.role)
             .then(result => {
@@ -36,7 +36,7 @@ const Register = () => {
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email,data.role);
+                        saveUser(data.name, data.email, data.role);
                     })
                     .catch(err => console.log(err));
             })
@@ -46,8 +46,8 @@ const Register = () => {
             });
     }
 
-    const saveUser = (name, email,role) => {
-        const user = { name, email,role };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -107,13 +107,20 @@ const Register = () => {
     return (
         <div>
 
-            <div className=' sm:w-full lg:w-1/3 min-h-screen mx-auto mt-12 mb-12  my-20 shadow-2xl bg-slate-100  text-gray-800 py-20 '>
+            <div data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000" className=' sm:w-full lg:w-1/3 min-h-screen mx-auto mt-12 mb-12  my-20 shadow-2xl bg-slate-100  text-gray-800 py-20 '>
                 <div className='w-96 mx-auto p-7'>
                     <h2 className='text-2xl font-bold text-center  text-gray-800'>Sign UP</h2>
                     <form onSubmit={handleSubmit(handleSignUp)}>
+                        <div className="form-control w-full max-w-xs">
+                            <label className="label">
+                                <span className="label-text  text-gray-800">Your Name</span>
+                            </label>
+                            <input {...register("name", { required: "Name is required" })} className="input input-bordered w-full max-w-xs" />
+                        </div>
 
 
-                         
 
                         <select {...register("role", { required: "buyer  is required" })} className="select select-bordered w-full max-w-xs mt-8">
                             <option disabled selected>Select Your Choice</option>
@@ -148,7 +155,7 @@ const Register = () => {
 
                         </div>
 
-                        <input className='btn text-gray-900 btn-primary w-full' value="Log in" type="submit" />
+                        <input className='btn text-gray-900 btn-primary w-full' value="Register" type="submit" />
                         {signUpError && <p className='text-red-600'>{signUpError}</p>}
                     </form>
                     <p>Already Have an account?<Link to='/login' className='text-primary'> Go to Login</Link> </p>

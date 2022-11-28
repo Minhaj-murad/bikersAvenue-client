@@ -11,7 +11,7 @@ const SingleBike = ({ bike, setvehicle }) => {
   console.log(bike);
   const time = new Date();
   console.log(time);
-  const { bikeName, picture, location, used, resaleprice, originalprice, email,seller, availability } = bike;
+  const { bikeName, picture, location, used, resaleprice, originalprice, email,seller, availability,date } = bike;
   console.log(bikeName);
 
 
@@ -89,6 +89,8 @@ const SingleBike = ({ bike, setvehicle }) => {
           <div className='flex justify-between'>
             <p className='font-bold text-md'>Location:{location}</p> <p className='font-bold text-md'>Used: {used}</p>
           </div>
+          <p className='font-bold text-md'>Posted:{date}</p> 
+
           <div className="card-actions justify-between">
           <button onClick={() => handlewish()} className='btn btn-warning max-w-sm'>Add to Wishlist </button>
             <label htmlFor="booking-modal" onClick={() => setvehicle(bike)} className="btn btn-primary">Buy Now</label>

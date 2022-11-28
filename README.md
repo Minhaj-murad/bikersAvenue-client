@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+
+## Project Overview:
+  
+  1. This project is designed as a online bike selling platform in which people can easily buy and sell bikes.
+
+  2.While doing this project,i for the first time use useQuery, with JWT Token as well as Stripe Payment Gateway Method
+  
+  3.As I worked on this project, I also studied CRUD operations. Through the POST, PATCH, GET, and DELETE methods, I was also able to see how beautifully data can be created, read, updated, and deleted.
+
+  4.I also used both Google Auth and Email and Password Verification for buyers and only Email and Password Verification for sellers  method for creating simple authentication .
+
+  5 AdminRoute, SellerRoute are being used for admins and sellers .One cannot access to these section without log in as seller or without declared as admin by another admin .
 ## Available Scripts
 
 In the project directory, you can run:
